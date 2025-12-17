@@ -353,7 +353,6 @@ img {
 }
 
 .project-description {
-  font-size: 16px; /* normal text size */
+  font-size: 16px;
   font-weight: normal;
-  text-align: left; /* optional, overrides global div centering */
 }
