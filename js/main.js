@@ -22,7 +22,10 @@ let carouselStates = {};
 
 function initCarousel(categoryId, totalSlides) {
   carouselStates[categoryId] = { currentSlide: 0, totalSlides: totalSlides };
-  updateCarousel(categoryId);
+  // Small delay to ensure images are loaded
+  setTimeout(() => {
+    updateCarousel(categoryId);
+  }, 100);
 }
 
 function nextSlide(categoryId) {
@@ -49,13 +52,23 @@ function goToSlide(categoryId, slideIndex) {
 
 function updateCarousel(categoryId) {
   const state = carouselStates[categoryId];
+  const container = document.querySelector(`#${categoryId} .carousel-container`);
   const slides = document.querySelector(`#${categoryId} .carousel-slides`);
   const prevBtn = document.querySelector(`#${categoryId} .carousel-prev`);
   const nextBtn = document.querySelector(`#${categoryId} .carousel-next`);
   const dots = document.querySelectorAll(`#${categoryId} .carousel-dot`);
+  const allSlides = document.querySelectorAll(`#${categoryId} .carousel-slide`);
+  const currentSlide = allSlides[state.currentSlide];
   
   if (slides) {
     slides.style.transform = `translateX(-${state.currentSlide * 100}%)`;
+  }
+  
+  // Adjust container height to match current slide
+  if (container && currentSlide) {
+    // Force reflow to get accurate height
+    const height = currentSlide.offsetHeight;
+    container.style.height = height + 'px';
   }
   
   if (prevBtn) prevBtn.disabled = state.currentSlide === 0;
@@ -211,7 +224,7 @@ function renderProjects() {
                         return `
                           <div class="carousel-slide">
                             <div class="project-title">${project.title}</div>
-                            <div class="project-description">${project.description}</div>
+                            ${project.description}
                             ${imageGallery}
                             ${fileLinks}
                           </div>
@@ -270,7 +283,7 @@ function renderProjects() {
                         return `
                           <div class="carousel-slide">
                             <div class="project-title">${project.title}</div>
-                            <div class="project-description">${project.description}</div>
+                            ${project.description}
                             ${imageGallery}
                             ${fileLinks}
                           </div>

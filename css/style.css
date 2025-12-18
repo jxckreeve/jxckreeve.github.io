@@ -272,16 +272,21 @@ img {
 .carousel-container {
   overflow: hidden;
   position: relative;
+  transition: height 0.3s ease-in-out;
 }
 
 .carousel-slides {
   display: flex;
   transition: transform 0.3s ease-in-out;
+  align-items: flex-start;
 }
 
 .carousel-slide {
   min-width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
+  flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .carousel-nav {
