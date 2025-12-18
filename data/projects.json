@@ -24,10 +24,10 @@
       "title": "Mitre Gauge",
       "description": "This mitre gauge was constructed as part of a project for my Level 3 Engineering BTEC. It was modelled by measuring each dimension, creating each part, and then putting it all together in an assembly to ensure compatibility.",
       "images": [
-        "./projects/cad/mitregauge/1..JPG",
-        "./projects/cad/mitregauge/Untitlede.JPG",
-        "./projects/cad/mitregauge/3..JPG",
-        "./projects/cad/mitregauge/4..JPG"
+        "./projects/cad/mitregauge/1.JPG",
+        "./projects/cad/mitregauge/2.JPG",
+        "./projects/cad/mitregauge/3.JPG",
+        "./projects/cad/mitregauge/4.JPG"
       ],
       "files": []
     },
@@ -35,9 +35,9 @@
       "title": "Vice",
       "description": "Similar to the mitre gauge, this vice was also a project for my Engineering course. I measured the physical dimensions of the vice, then proceeded to model it in SolidWorks.",
       "images": [
-        "./projects/cad/vice/1..JPG",
-        "./projects/cad/vice/2..JPG",
-        "./projects/cad/vice/3..JPG"
+        "./projects/cad/vice/1.JPG",
+        "./projects/cad/vice/2.JPG",
+        "./projects/cad/vice/3.JPG"
       ],
       "files": []
     }
