@@ -224,7 +224,7 @@ function renderProjects() {
                         return `
                           <div class="carousel-slide">
                             <div class="project-title">${project.title}</div>
-                            ${project.description}
+                            <div class="project-description">${project.description}</div>
                             ${imageGallery}
                             ${fileLinks}
                           </div>
@@ -283,7 +283,7 @@ function renderProjects() {
                         return `
                           <div class="carousel-slide">
                             <div class="project-title">${project.title}</div>
-                            ${project.description}
+                            <div class="project-description">${project.description}</div>
                             ${imageGallery}
                             ${fileLinks}
                           </div>
