@@ -29,7 +29,12 @@
         "./projects/cad/mitregauge/3.JPG",
         "./projects/cad/mitregauge/4.JPG"
       ],
-      "files": []
+      "files": [
+          {
+            "name": "Assembly Drawing.pdf",
+            "url": "./projects/cad/mitregauge/Drw1.pdf"
+          }
+      ]
     },
     {
       "title": "Vice",

@@ -216,9 +216,11 @@ function renderProjects() {
                         const fileLinks = project.files && project.files.length > 0 ?
                           `<div style="margin-top: 15px;">
                             <strong>Additional Files:</strong><br>
-                            ${project.files.map(file => 
-                              `<a href="${file.url}" target="_blank">${file.name}</a>`
-                            ).join('<br>')}
+                              ${project.files.map(file => 
+                                `<div class="project-file">
+                                  <a href="${file.url}" target="_blank">${file.name}</a>
+                                </div>`
+                              ).join('')}
                           </div>` : '';
 
                         return `
@@ -275,9 +277,11 @@ function renderProjects() {
                         const fileLinks = project.files && project.files.length > 0 ?
                           `<div style="margin-top: 15px;">
                             <strong>Additional Files:</strong><br>
-                            ${project.files.map(file => 
-                              `<a href="${file.url}" target="_blank">${file.name}</a>`
-                            ).join('<br>')}
+                              ${project.files.map(file => 
+                                `<div class="project-file">
+                                  <a href="${file.url}" target="_blank">${file.name}</a>
+                                </div>`
+                              ).join('')}
                           </div>` : '';
 
                         return `
