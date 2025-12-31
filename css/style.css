@@ -88,12 +88,14 @@ a:hover {
   font-size: 16px;
   color: var(--accent-color);
   position: relative;
-  left: 20px;
+  left: 0;
+  text-align: center;
 }
 
 .title i {
   position: relative;
-  left: -10px;
+  left: 0;
+  margin-right: 5px;
 }
 
 .content {
