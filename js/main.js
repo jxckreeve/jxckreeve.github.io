@@ -165,7 +165,7 @@ function renderHome() {
   return `
     <div id="info_card" class="card">
       <section class="tab">
-        <div class="title"><i class="fas fa-info-circle"></i><b>About Me</b></div>
+        <div class="title"><i class="fas fa-info-circle"></i><b>Welcome</b></div>
         <div class="content">
           <section class="element">
             <div class="info">${profileData.about}</div>
