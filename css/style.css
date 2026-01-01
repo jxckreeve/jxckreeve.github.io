@@ -98,6 +98,15 @@ a:hover {
   margin-right: 5px;
 }
 
+.cv-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--accent-color);
+  position: relative;
+  left: 0;
+  text-align: center;
+}
+
 .content {
   padding: 5px 10px 5px 10px;
   position: relative;
@@ -347,6 +356,30 @@ img {
   color: var(--accent-color);
 }
 
+.project-description {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.project-file {
+  margin-top: 0.5rem;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.cv-institution {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.cv-dates {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
 @media (max-width: 960px) {
   .card {
     width: 75%;
@@ -357,15 +390,4 @@ img {
   #social_card {
     margin-bottom: 20px;
   }
-}
-
-.project-description {
-  font-size: 16px;
-  font-weight: normal;
-}
-
-.project-file {
-  margin-top: 0.5rem;
-  font-size: 16px;
-  font-weight: normal;
 }

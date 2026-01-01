@@ -1,4 +1,6 @@
 {
-  "description": "Click here to find a PDF copy of my CV.",
-  "pdfUrl": "/assets/TempCV.pdf"
+  "downloadLink": {
+    "description": "Click here to find a PDF copy of my CV.",
+    "pdfUrl": "/assets/TempCV.pdf"
+  }
 }

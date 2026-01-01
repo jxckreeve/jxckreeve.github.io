@@ -1,0 +1,93 @@
+{
+  "profile": {
+    "title": "Profile",
+    "content": "Hands-on and hardworking engineering student with a strong interest in problem-solving and practical work. Experienced in teamwork, leadership, and customer-facing environments through Scouting and engineering projects. Comfortable in fast-paced settings and proactive in taking responsibility."
+  },
+  "education": [
+    {
+      "title": "A-Levels & BTECs",
+      "institution": "Stone Lodge School - Sixth Form",
+      "dates": "Sep. 2024 - Present",
+      "description": "N/A",
+      "achievements": [
+        "Level 3 National Diploma in Engineering (Double BTEC)",
+        "A-Level Business"
+      ]
+    },
+    {
+      "title": "GCSEs",
+      "institution": "Gravesend Grammar School",
+      "dates": "Sep. 2019 - Aug. 2024",
+      "description": "N/A",
+      "achievements": [
+        "GCSEs including English Language (7), Maths (6), Triple Science and others.",
+        "School Certificate in Philosophy (Northeastern University London & Cranleigh School) (7)"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Workshop Mechanic - Work Placement",
+      "company": "MK Sportscars",
+      "dates": "July 2025",
+      "description": "Short work placement in a specialist kit car workshop, supporting day-to-day mechanical tasks and vehicle preparation while learning from experienced engineers in a professional environment and relevant industry.",
+      "achievements": [
+        "Assisted in the build and assembly of specialist kit cars, gaining hands-on mechanical engineering experience.",
+        "Carried out maintenance, inspections, and preparation of a bike-engine vehicle for track use.",
+        "Developed problem-solving, teamwork, and adaptability in a fast-paced workshop environment."
+      ]
+    },
+    {
+      "title": "Young Leader - Volunteer Work",
+      "company": "Elm Cub Pack",
+      "dates": "Nov. 2020 - Present",
+      "description": "Long-term volunteering role supporting the delivery of weekly Scouting sessions, working with leaders to run activities, manage groups of children, and ensure a safe, organised environment.",
+      "achievements": [
+        "Delivered weekly sessions for Cubs (aged 8–10), including activities, games, and workshops.",
+        "Took responsibility for managing resources, planning evenings and ensuring safety which helped to build confidence and leadership in a live environment.",
+        "Presented at AGMs, speaking to large audiences including parents and leaders, helping to improve my public speaking in a formal setting as well as overcome my stutter."
+      ]
+    }
+  ],
+  "awards": {
+    "title": "Awards and Achievements",
+    "items": [
+      "Chief Scout’s Platinum",
+      "Head Student at Stone Lodge School",
+      "Engineering Excellence Awards (Year 12 and 13)",
+      "Matt Smith CAD award (Year 12)"
+    ]
+  },
+  "skills": [
+    {
+      "title": "Engineering & Technical",
+      "items": [
+        "Built an off-road buggy, two kit cars, contributed to a twin-engine Fiat 500 and restored a 1999 Saab 9-3.",
+        "Confident with mechanical fitting tasks such as component installation and alignment, basic welding, and safe use of workshop tools.",
+        "Experience with CAD and practical problem-solving on real projects."
+      ]
+    },
+    {
+      "title": "Leadership, Teamwork & Responsibility",
+      "items": [
+        "Scouting Young Leader, delivering and assisting with weekly sessions for Cubs as previously mentioned.",
+        "Public speaking at AGMs, events, assemblies, and open evenings.",
+        "Head Student at Stone Lodge Sixth Form, representing students and supporting staff across the school."
+      ]
+    },
+    {
+      "title": "Enterprise & Initiative",
+      "items": [
+        "Designed, 3D printed, and sold custom products for school sports teams.",
+        "Experience reselling items online (eBay, Facebook Marketplace, Vinted), managing listings, communication, and logistics."
+      ]
+    },
+    {
+      "title": "Miscellaneous.",
+      "items": [
+        "First Aid trained through my Young Leader work.",
+        "Attended two international Scout camps, demonstrating independence and adaptability."
+      ]
+    }
+  ]
+}

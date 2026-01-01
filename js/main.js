@@ -2,6 +2,7 @@
 let profileData = null;
 let socialData = null;
 let cvData = null;
+let cvSectionsData = null;
 let projectsData = null;
 
 // Lightbox functions
@@ -110,8 +111,23 @@ async function loadData() {
     } catch (e) {
       console.warn('CV data not found, using defaults');
       cvData = {
-        description: "CV information coming soon.",
-        pdfUrl: "#"
+        downloadLink: {
+          description: "CV information coming soon.",
+          pdfUrl: "#"
+        }
+      };
+    }
+
+    try {
+      cvSectionsData = await fetch('./data/cv-sections.json').then(r => r.json());
+    } catch (e) {
+      console.warn('CV sections data not found, using defaults');
+      cvSectionsData = {
+        profile: { title: "Profile", content: "Profile information coming soon." },
+        education: [],
+        experience: [],
+        awards: { title: "Awards and Achievements", items: [] },
+        skills: []
       };
     }
 
@@ -161,20 +177,204 @@ function renderHome() {
 }
 
 function renderCV() {
-  return `
-    <div id="info_card" class="card">
-      <section class="tab">
-        <div class="title"><i class="fas fa-info-circle"></i><b>My CV</b></div>
-        <div class="content">
-          <section class="element">
-            <div class="info">
-              <a href="${cvData.pdfUrl}">${cvData.description}</a>
-            </div>
-          </section>
-        </div>
-      </section>
-    </div>
-  `;
+  let html = ''
+
+  // Profile Section (Single Box)
+  if (cvSectionsData.profile) {
+    html += `
+      <div id="info_card" class="card">
+        <section class="tab">
+          <div class="cv-title">
+            <strong>Profile</strong>
+          </div>
+          <div class="content">
+            <section class="element">
+              <div class="info">${cvSectionsData.profile.content}</div>
+            </section>
+          </div>
+        </section>
+      </div>
+    `;
+  }
+
+  // Education Section (Carousel)
+  if (cvSectionsData.education && cvSectionsData.education.length > 0) {
+    html += `
+      <div id="info_card" class="card">
+        <section class="tab">
+          <div class="cv-title"><b>Education</b></div>
+          <div class="content">
+            <section class="element">
+              <div class="info">
+                <div id="education-carousel" class="project-carousel">
+                  <div class="carousel-container">
+                    <div class="carousel-slides">
+                      ${cvSectionsData.education.map(edu => {
+                        const achievements = edu.achievements && edu.achievements.length > 0 ?
+                          `<ul style="margin-top: 10px; text-align: left;">
+                            ${edu.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                          </ul>` : '';
+
+                        return `
+                          <div class="carousel-slide">
+                            <div class="project-title">${edu.institution}</div>
+                            <div class="cv-institution">${edu.title}</div>
+                            <div class="cv-dates">${edu.dates}</div>
+                            <!-- <div class="project-description" style="margin-top: 10px;">${edu.description}</div> -->
+                            <div class="project-description">${achievements}</div>
+                          </div>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                  ${cvSectionsData.education.length > 1 ? `
+                  <div class="carousel-nav">
+                    <button class="carousel-button carousel-prev" onclick="prevSlide('education-carousel')">← Prev</button>
+                    <div class="carousel-dots">
+                      ${cvSectionsData.education.map((_, index) => 
+                        `<span class="carousel-dot" onclick="goToSlide('education-carousel', ${index})"></span>`
+                      ).join('')}
+                    </div>
+                    <button class="carousel-button carousel-next" onclick="nextSlide('education-carousel')">Next →</button>
+                  </div>
+                  ` : ''}
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    `;
+  }
+
+  // Experience Section (Carousel)
+  if (cvSectionsData.experience && cvSectionsData.experience.length > 0) {
+    html += `
+      <div id="info_card" class="card">
+        <section class="tab">
+          <div class="cv-title"><b>Experience</b></div>
+          <div class="content">
+            <section class="element">
+              <div class="info">
+                <div id="experience-carousel" class="project-carousel">
+                  <div class="carousel-container">
+                    <div class="carousel-slides">
+                      ${cvSectionsData.experience.map(exp => {
+                        const achievements = exp.achievements && exp.achievements.length > 0 ?
+                          `<ul style="margin-top: 10px; text-align: left;">
+                            ${exp.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+                          </ul>` : '';
+
+                        return `
+                          <div class="carousel-slide">
+                            <div class="project-title">${exp.title}</div>
+                            <div class="cv-institution">${exp.company}</div>
+                            <div class="cv-dates">${exp.dates}</div>
+                            <div class="project-description" style="margin-top: 10px;">${exp.description}</div>
+                            <div class="project-description">${achievements}</div>
+                          </div>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                  ${cvSectionsData.experience.length > 1 ? `
+                  <div class="carousel-nav">
+                    <button class="carousel-button carousel-prev" onclick="prevSlide('experience-carousel')">← Prev</button>
+                    <div class="carousel-dots">
+                      ${cvSectionsData.experience.map((_, index) => 
+                        `<span class="carousel-dot" onclick="goToSlide('experience-carousel', ${index})"></span>`
+                      ).join('')}
+                    </div>
+                    <button class="carousel-button carousel-next" onclick="nextSlide('experience-carousel')">Next →</button>
+                  </div>
+                  ` : ''}
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    `;
+  }
+
+  // Awards Section (Single Box)
+  if (cvSectionsData.awards && cvSectionsData.awards.items.length > 0) {
+    html += `
+      <div id="info_card" class="card">
+        <section class="tab">
+          <div class="cv-title"><b>${cvSectionsData.awards.title}</b></div>
+          <div class="content">
+            <section class="element">
+              <div class="info">
+                <ul class="project-description" style="text-align: left;">
+                  ${cvSectionsData.awards.items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    `;
+  }
+
+  // Skills Section (Carousel)
+  if (cvSectionsData.skills && cvSectionsData.skills.length > 0) {
+    html += `
+      <div id="info_card" class="card">
+        <section class="tab">
+          <div class="cv-title"><b>Skills</b></div>
+          <div class="content">
+            <section class="element">
+              <div class="info">
+                <div id="skills-carousel" class="project-carousel">
+                  <div class="carousel-container">
+                    <div class="carousel-slides">
+                      ${cvSectionsData.skills.map(skill => {
+                        return `
+                          <div class="carousel-slide">
+                            <div class="project-title">${skill.title}</div>
+                            <ul class="project-description"; style="margin-top: 10px; text-align: left;">
+                              ${skill.items.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                          </div>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                  ${cvSectionsData.skills.length > 1 ? `
+                  <div class="carousel-nav">
+                    <button class="carousel-button carousel-prev" onclick="prevSlide('skills-carousel')">← Prev</button>
+                    <div class="carousel-dots">
+                      ${cvSectionsData.skills.map((_, index) => 
+                        `<span class="carousel-dot" onclick="goToSlide('skills-carousel', ${index})"></span>`
+                      ).join('')}
+                    </div>
+                    <button class="carousel-button carousel-next" onclick="nextSlide('skills-carousel')">Next →</button>
+                  </div>
+                  ` : ''}
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    `;
+  }
+
+  // Initialize carousels after rendering
+  setTimeout(() => {
+    if (cvSectionsData.education && cvSectionsData.education.length > 1) {
+      initCarousel('education-carousel', cvSectionsData.education.length);
+    }
+    if (cvSectionsData.experience && cvSectionsData.experience.length > 1) {
+      initCarousel('experience-carousel', cvSectionsData.experience.length);
+    }
+    if (cvSectionsData.skills && cvSectionsData.skills.length > 1) {
+      initCarousel('skills-carousel', cvSectionsData.skills.length);
+    }
+  }, 0);
+
+  return html;
 }
 
 function renderProjects() {
@@ -216,11 +416,11 @@ function renderProjects() {
                         const fileLinks = project.files && project.files.length > 0 ?
                           `<div style="margin-top: 15px;">
                             <strong>Additional Files:</strong><br>
-                              ${project.files.map(file => 
-                                `<div class="project-file">
-                                  <a href="${file.url}" target="_blank">${file.name}</a>
-                                </div>`
-                              ).join('')}
+                            ${project.files.map(file => 
+                              `<div class="project-file">
+                                <a href="${file.url}" target="_blank">${file.name}</a>
+                              </div>`
+                            ).join('<br>')}
                           </div>` : '';
 
                         return `
@@ -277,11 +477,11 @@ function renderProjects() {
                         const fileLinks = project.files && project.files.length > 0 ?
                           `<div style="margin-top: 15px;">
                             <strong>Additional Files:</strong><br>
-                              ${project.files.map(file => 
+                            ${project.files.map(file => 
                                 `<div class="project-file">
                                   <a href="${file.url}" target="_blank">${file.name}</a>
                                 </div>`
-                              ).join('')}
+                            ).join('<br>')}
                           </div>` : '';
 
                         return `
